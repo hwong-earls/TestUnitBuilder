@@ -42,7 +42,7 @@ class TestBuildCommand extends ContainerAwareCommand
                         $classMetaObj = new ClassesMetaExtract($entry);
                         $listClasses = $classMetaObj->getClasses();
                         if(!empty($listClasses)){                           
-                            $testGenerator = new TestUnitGenerator($classMetaObj->getClasses(), $entry);
+                            $testGenerator = new TestUnitGenerator($classMetaObj->getClasses(), $entry, $configManage->getKey('startpoint');
                             $fileToCreate = $testGenerator->buildTest();
                             if (false === @file_put_contents($testFile, $fileToCreate)) {
                                 throw new IOException(sprintf('Failed to write file "%s".', $filename), 0, null, $filename);

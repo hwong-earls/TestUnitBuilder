@@ -9,9 +9,11 @@ class TestUnitGenerator
     private $outputBuffer;
     private $classMeta;
     private $fileMeta;
+    private $startpoint;
 
-    public function __construct(array $classMeta = NULL, array $fileMeta = NULL)
+    public function __construct(array $classMeta = NULL, array $fileMeta = NULL, $startpoint)
     {
+        $this->startpoint = $startpoint;
         $this->classMeta = $classMeta;
         $this->fileMeta = $fileMeta;
         $this->outputBuffer = ''; //---- Initialize Output Buffer, set empty
@@ -43,11 +45,11 @@ class TestUnitGenerator
     private function buildMainStruct()
     {
         $this->outputBuffer .= $this->writeln("<?php"); 
-        $this->outputBuffer .= $this->writeln("namespace " . $this->getNamespace() . ";\n");
+        //$this->outputBuffer .= $this->writeln("namespace " . $this->getNamespace() . ";\n");
         $this->outputBuffer .= $this->addUse();
         $this->outputBuffer .= $this->writeln("class " . $this->getClassName() . "Test extends \PHPUnit_Framework_TestCase");
         $this->outputBuffer .= $this->writeln(self::$OPEN_BRAKET);
-        $this->outputBuffer .= $this->writeln("\tprivate " . $this->getClassName() . ";\n");
+        $this->outputBuffer .= $this->writeln("\tprivate $" . $this->getClassName() . ";\n");
         $this->outputBuffer .= $this->addSetUp();
         $this->outputBuffer .= $this->addFunctionTest();
         $this->outputBuffer .= $this->addTearDown();
@@ -70,9 +72,13 @@ class TestUnitGenerator
     }
     
     private function addUse()
-    {
+    {       
+        $filename = $this->fileMeta['file'];
+        $breakpoint = $this->startpoint . '/./';
+        $filename = str_replace('/', '\\', substr($filename, strpos($filename, $breakpoint) + strlen($breakpoint)));
+        $filename = substr($filename,0, strrpos($filename, '.php'));
         $output = '';
-        $output .= 'use ' . $this->fileMeta['file'] . ";\n";
+        $output .= 'use ' . $filename . ";\n";
 
         return $this->writeln($output);
     }
@@ -85,7 +91,7 @@ class TestUnitGenerator
             $methodCall = ucfirst($method);
             $output .= $this->writeln("\tpublic function test{$methodCall}()");
             $output .= $this->writeln("\t". self::$OPEN_BRAKET);
-            $output .= $this->writeln("\t\t" . '$result = $this->' . $this->getClassName() . '->' . $method . '();');
+            $output .= $this->writeln("\t\t" . '//$result = $this->' . $this->getClassName() . '->' . $method . '();');
             $output .= $this->writeln("\t\t" . '$this->assertEquals(0,0);');
             $output .= $this->writeln("\t" . self::$CLOSE_BRAKET);
             $output .= $this->writeln();
