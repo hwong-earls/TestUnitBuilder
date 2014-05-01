@@ -21,6 +21,11 @@ composer.json:
 ```
 Execute composer.phar update
 
+app/AppKernel.php add:
+```
+new Earls\TestBuilderBundle\TestBuilderBundle(),
+```   
+
 ##Configuration
 
 *config.yml* inside *earls/TestBuilderBundle/Earls/TestBuilderBundle/Resources/config*
