@@ -1,8 +1,8 @@
 {
-    "name": "hwong-earls/TestUnitBuilder",
+    "name": "earls/TestBuilderBundle",
     "autoload": {
         "psr-0" : {
-            "Earls\\TestBuilderBundle" : "vendor/earls/bundle/"
+            "Earls\\TestBuilderBundle" : ""
         }
     }
 }
