@@ -4,7 +4,7 @@ Earls TestUnit Builder
 It is a Symfony bundle which implement a console command for auto create **TestUnits** for your project.
 This tool explore ./src and create ./tests folder in where all the **TestUnit** will be alocated follow the same folder structure from the host bundle.
 
-##Installation##
+##Installation
 
 composer.json:
 
@@ -21,29 +21,29 @@ composer.json:
 
 Execute composer.phar update
 
-##Configuration##
+##Configuration
 
 *config.yml* inside *earls/TestBuilderBundle/Earls/TestBuilderBundle/Resources/config*
 
 Sections:
-*startpoint:*
+**startpoint:**
    Location of the source, start point for scan the project.   
 
-*excludeDir:*
+**excludeDir:**
    List of directories for ignore.
 
-*excludeFile:*
+**excludeFile:**
    List of files for ignore. Use *regular expresion*.
 
 Example:
 
-startpoint: /src
-excludeDir:
+`startpoint:` /src
+`excludeDir:`
     - Tests
     - DependencyInjection
     - Command
     - RhinoReportBundle
-excludeFile:
+`excludeFile:`
     - .*Bundle\.php
     - .*Test\.php
     - .*\.phar
