@@ -1,0 +1,12 @@
+startpoint: /src
+excludeDir:
+    - Tests
+    - DependencyInjection
+    - Command
+    - RhinoReportBundle
+excludeFile:
+    - .*Bundle\.php
+    - .*Test\.php
+    - .*\.phar
+    - FieldFilterType.php
+    - NumberFilterType.php
