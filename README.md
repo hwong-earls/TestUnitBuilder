@@ -25,14 +25,14 @@ Execute composer.phar update
 
 *config.yml* inside *earls/TestBuilderBundle/Earls/TestBuilderBundle/Resources/config*
 
-Sections:
-**startpoint:**
+Sections:  
+**startpoint:**  
    Location of the source, start point for scan the project.   
 
-**excludeDir:**
+**excludeDir:**  
    List of directories for ignore.
 
-**excludeFile:**
+**excludeFile:**  
    List of files for ignore. Use *regular expresion*.
 
 Example:
