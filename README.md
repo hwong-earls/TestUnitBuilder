@@ -7,7 +7,7 @@ This tool explore ./src and create ./tests folder in where all the **TestUnit** 
 ##Installation
 
 composer.json:
-
+```
 "require": {
 	"earls/TestBuilderBundle": "dev-master"
 },
@@ -18,7 +18,7 @@ composer.json:
         "url": "https://github.com/hwong-earls/TestUnitBuilder"
     }
 ]
-
+```
 Execute composer.phar update
 
 ##Configuration
@@ -36,16 +36,17 @@ Sections:
    List of files for ignore. Use *regular expresion*.
 
 Example:
-
-`startpoint:` /src
-`excludeDir:`
+```
+startpoint: /src
+excludeDir:
     - Tests
     - DependencyInjection
     - Command
     - RhinoReportBundle
-`excludeFile:`
+excludeFile:
     - .*Bundle\.php
     - .*Test\.php
     - .*\.phar
     - FieldFilterType.php
     - NumberFilterType.php
+```
